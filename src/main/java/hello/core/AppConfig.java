@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
+    // bean name is memberService
+    // bean object is MemberServiceImpl
     public MemberService memberService(){
         return new MemberServiceImpl(memberRepository());
     }
