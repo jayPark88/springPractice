@@ -17,24 +17,30 @@ public class AppConfig {
     @Bean
     // bean name is memberService
     // bean object is MemberServiceImpl
-    public MemberService memberService(){
+    public MemberService memberService() {
+        // 1번(호출 카운트를 의미)
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
-   @Bean
-    public OrderService orderService(){
+    @Bean
+    public OrderService orderService() {
+        // 1번(호출 카운트를 의미)
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(
                 memberRepository(),
                 discountPolicy());
     }
 
     @Bean
-    public MemberRepository memberRepository(){
+    public MemberRepository memberRepository() {
+        // 2번? 3번?(호출 카운트를 의미)
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
-    public DiscountPolicy discountPolicy(){
+    public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
 }
